@@ -19,7 +19,8 @@ CREATE TABLE `Course` (
 	`level` Int( 10 ) NOT NULL,
 	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
 	`teacher_id` Int( 11 ) NOT NULL,
-	`created` DateTime NOT NULL,
+	`created` Timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	`about` Text NOT NULL,
 	PRIMARY KEY ( `id` ) )
 ENGINE = InnoDB
 AUTO_INCREMENT = 4;
@@ -32,7 +33,7 @@ CREATE TABLE `comments` (
 	`user_id` Int( 11 ) NOT NULL,
 	`course_id` Int( 11 ) NULL,
 	`teacher_id` Int( 11 ) NULL,
-	`created` DateTime NOT NULL,
+	`created` Timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	`text_review` Text NULL,
 	PRIMARY KEY ( `id` ) )
 ENGINE = InnoDB
@@ -47,6 +48,7 @@ CREATE TABLE `lessons` (
 	`course_id` Int( 11 ) NOT NULL,
 	`text` VarChar( 100 ) NOT NULL,
 	`links_to_resources` VarChar( 255 ) NOT NULL,
+	`created` Timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY ( `id` ) )
 ENGINE = InnoDB;
 -- ---------------------------------------------------------
@@ -55,14 +57,14 @@ ENGINE = InnoDB;
 -- CREATE TABLE "teachers" ---------------------------------
 CREATE TABLE `teachers` ( 
 	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`name` VarChar( 100 ) NOT NULL,
 	`about` Text NOT NULL,
 	`skills` VarChar( 60 ) NOT NULL,
-	`phone` Int( 20 ) NOT NULL,
+	`phone` Int( 25 ) NOT NULL,
 	`mail` VarChar( 100 ) NOT NULL,
 	`skype` VarChar( 100 ) NOT NULL,
 	`photo` VarChar( 255 ) NOT NULL,
-	`created` DateTime NOT NULL,
+	`created` Timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	`name` VarChar( 100 ) NOT NULL,
 	`surname` VarChar( 100 ) NOT NULL,
 	PRIMARY KEY ( `id` ) )
 ENGINE = InnoDB
@@ -76,13 +78,13 @@ CREATE TABLE `users` (
 	`login` VarChar( 155 ) NOT NULL DEFAULT 'user',
 	`password` VarChar( 155 ) NOT NULL,
 	`email` VarChar( 155 ) NOT NULL,
-	`name` VarChar( 30 ) NOT NULL,
 	`age` Int( 3 ) NOT NULL,
 	`avatar` VarChar( 255 ) NOT NULL DEFAULT 'logo.png',
 	`city` VarChar( 20 ) NOT NULL,
-	`phone` Int( 20 ) NOT NULL,
-	`date_register` Date NOT NULL,
+	`phone` Int( 25 ) NOT NULL,
+	`date_register` Timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	`level` Int( 10 ) NOT NULL,
+	`name` VarChar( 30 ) NOT NULL,
 	`surname` VarChar( 30 ) NOT NULL,
 	PRIMARY KEY ( `id` ) )
 ENGINE = InnoDB
@@ -91,9 +93,9 @@ AUTO_INCREMENT = 3;
 
 
 -- Dump data of "Course" -----------------------------------
-INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`) VALUES ( 'PHP', '5500', '60', '2', '1', '1', '0000-00-00 00:00:00' );
-INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`) VALUES ( 'Phiton', '2000', '20', '1', '2', '1', '0000-00-00 00:00:00' );
-INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`) VALUES ( 'JavaScript', '3800', '60', '1', '3', '2', '0000-00-00 00:00:00' );
+INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'PHP', '5500', '60', '2', '1', '1', '0000-00-00 00:00:00', '' );
+INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'Phiton', '2000', '20', '1', '2', '1', '0000-00-00 00:00:00', '' );
+INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'JavaScript', '3800', '60', '1', '3', '2', '0000-00-00 00:00:00', '' );
 -- ---------------------------------------------------------
 
 
@@ -113,8 +115,8 @@ INSERT INTO `teachers`(`id`,`name`,`about`,`skills`,`phone`,`mail`,`skype`,`phot
 
 
 -- Dump data of "users" ------------------------------------
-INSERT INTO `users`(`id`,`login`,`password`,`email`,`name`,`age`,`avatar`,`city`,`phone`,`date_register`,`level`,`surname`) VALUES ( '1', 'alenija', '12345', 'alenija23@gmail.com', 'Alona', '28', 'logo.png', 'Kharkiv', '380967673', '2015-10-11', '3', 'Verzina' );
-INSERT INTO `users`(`id`,`login`,`password`,`email`,`name`,`age`,`avatar`,`city`,`phone`,`date_register`,`level`,`surname`) VALUES ( '2', 'Kirill', '54321', 'kostichev.kirill@gmail.com', 'Kirill', '29', 'logo.png', 'Kharkiv', '380955790', '2015-02-03', '4', 'Kostichev' );
+INSERT INTO `users`(`id`,`login`,`password`,`email`,`name`,`age`,`avatar`,`city`,`phone`,`date_register`,`level`,`surname`) VALUES ( '1', 'alenija', '12345', 'alenija23@gmail.com', 'Alona', '28', 'logo.png', 'Kharkiv', '380967673', '2015-10-11 00:00:00', '3', 'Verzina' );
+INSERT INTO `users`(`id`,`login`,`password`,`email`,`name`,`age`,`avatar`,`city`,`phone`,`date_register`,`level`,`surname`) VALUES ( '2', 'Kirill', '54321', 'kostichev.kirill@gmail.com', 'Kirill', '29', 'logo.png', 'Kharkiv', '380955790', '2015-02-03 00:00:00', '4', 'Kostichev' );
 -- ---------------------------------------------------------
 
 
