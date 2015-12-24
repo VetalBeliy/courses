@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>New view</title>
+	<title>Преподаватели</title>
 </head>
 <body>
 
+
+<h2>Преподаватели</h2>
+
+	<table border="2">
+		<tr>
+		<th>Фото</th>
+		<th>Имя</th>
+		<th>Фамилия</th>
+		<th>Skills</th>
+		<th>Информация</th>
+		<th>Телефон</th>
+		<th>Mail</th>
+		<th>Skype</th>
+		<th>Дата регистрации</th>
+		</tr>
+
 <?php foreach ($teachers as $item):?>
-<p>Имя преподавателя: <?=$item['name'];?></p>
-<p>Фамилия: <?=$item['surname'];?></p>
-<p>Информация: <?=$item['about'];?></p>
-<p>Skills: <?=$item['skills'];?></p>
-<p>Телефон: <?=$item['phone'];?></p>
-<p>Mail: <?=$item['mail'];?></p>
-<p>Skype: <?=$item['skype'];?></p>
-<p>Фото: <?=$item['photo'];?></p>
-<p>Дата регистрации: <?=$item['created'];?></p>
-<hr/>
+	<tr>
+	<td align="center"><img src = '<?=$item['photo'];?>'></td>
+	<td align="center"><?=$item['name'];?></td>
+	<td align="center"><?=$item['surname'];?></td>
+	<td align="center"><?=$item['skills'];?></td>
+	<td align="center"><?=$item['about'];?></td>
+	<td align="center"><?=$item['phone'];?></td>
+	<td align="center"><?=$item['mail'];?></td>
+	<td align="center"><?=$item['skype'];?></td>
+	<td align="center"><?=$item['created'];?></td>
+	</tr>
 <?php endforeach;?>
 
 </body>
