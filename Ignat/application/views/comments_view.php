@@ -8,7 +8,8 @@
 <body>
 	<table border="2">
 		<tr>
-			<th> Имя пользователя </th>
+			<th> Аватар </th>
+            <th> Имя пользователя </th>
 			<th> Название курса </th>
 			<th> Преподаватель </th>
 			<th> Дата создания </th>
@@ -17,6 +18,10 @@
 		<?php foreach ($comments as $comments_item): ?>
 		<tr>
 			<td align="left">
+                  <p><?php echo $comments_item['user_avatar']; ?></p>       
+            </td>
+
+            <td align="left">
         		<p><?php echo $comments_item['user_name']; ?></p>
         	</td>
 
@@ -40,23 +45,6 @@
         <?php endforeach; ?>
 	</table>
 	<br>
-	<form>
-		<table>
-			<tr>
-				<td><p>Имя пользователя:</p></td>
-				<td><input type="text" name="usernic" id="usernic" /></td>
-			</tr>
-			<tr>
-				<td><p>Название курса:</p></td>
-				<td><input type="text" name="fullname" id="fullname" /></td>
-			</tr>
-			<tr>
-				<td><p>Имя преподавателя:</p></td>
-				<td><input type="text" name="usermail" id="usermail" /></td>
-			</tr>
-		</table>	
-
-		<p><input type="submit" id="sendbtn" value="Оставить отзыв" /></p>
- 	</form>
+	<p><a href="comments_add">Добавить отзыв</a></p>
 </body>
 </html>
