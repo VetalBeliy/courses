@@ -8,7 +8,7 @@
             $this->db->select('users.name as user_name, users.avatar as user_avatar, course_name, teachers.name as teacher_name, comments.created, text_review');
             $this->db->from('comments');
             $this->db->join('users', 'users.id = comments.user_id', 'left');
-            $this->db->join('course', 'course.id = comments.course_id', 'left');
+            $this->db->join('courses', 'courses.id = comments.course_id', 'left');
             $this->db->join('teachers', 'teachers.id = comments.teacher_id', 'left');
             $query = $this->db->get();
             return $query->result_array();
@@ -16,8 +16,8 @@
 
         public function get_all_courses_teachers()
         {
-            $this->db->select('course.course_name, teachers.name');
-            $this->db->from('course, teachers');
+            $this->db->select('courses.course_name, teachers.name');
+            $this->db->from('courses, teachers');
             $query = $this->db->get();
             return $query->result_array();
         }
