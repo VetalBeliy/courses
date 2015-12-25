@@ -11,22 +11,6 @@
 -- ---------------------------------------------------------
 
 
--- CREATE TABLE "Course" -----------------------------------
-CREATE TABLE `Course` ( 
-	`course_name` VarChar( 255 ) NOT NULL,
-	`price` Int( 10 ) NOT NULL,
-	`duration` Int( 3 ) NOT NULL,
-	`level` Int( 10 ) NOT NULL,
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`teacher_id` Int( 11 ) NOT NULL,
-	`created` Timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	`about` Text NOT NULL,
-	PRIMARY KEY ( `id` ) )
-ENGINE = InnoDB
-AUTO_INCREMENT = 9;
--- ---------------------------------------------------------
-
-
 -- CREATE TABLE "comments" ---------------------------------
 CREATE TABLE `comments` ( 
 	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
@@ -59,7 +43,7 @@ CREATE TABLE `teachers` (
 	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
 	`about` Text NOT NULL,
 	`skills` VarChar( 60 ) NOT NULL,
-	`phone` VarChar( 25 ) NOT NULL,
+	`phone` VarChar( 15 ) NOT NULL,
 	`mail` VarChar( 100 ) NOT NULL,
 	`skype` VarChar( 100 ) NOT NULL,
 	`photo` VarChar( 255 ) NOT NULL,
@@ -81,7 +65,7 @@ CREATE TABLE `users` (
 	`age` Int( 3 ) NOT NULL,
 	`avatar` VarChar( 255 ) NOT NULL DEFAULT 'logo.png',
 	`city` VarChar( 20 ) NOT NULL,
-	`phone` Int( 25 ) NOT NULL,
+	`phone` VarChar( 15 ) NOT NULL,
 	`date_register` Timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	`level` Int( 10 ) NOT NULL,
 	`name` VarChar( 30 ) NOT NULL,
@@ -92,95 +76,19 @@ AUTO_INCREMENT = 5;
 -- ---------------------------------------------------------
 
 
--- Dump data of "Course" -----------------------------------
-INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'PHP', '5500', '60', '2', '1', '1', '0000-00-00 00:00:00', '' );
-INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'Phiton', '2000', '20', '1', '2', '1', '0000-00-00 00:00:00', '' );
-INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'JavaScript', '3800', '60', '1', '3', '2', '0000-00-00 00:00:00', '' );
-INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'Java', '4500', '60', '2', '4', '3', '2015-12-23 02:37:41', 'Основы объектно-ориентированного программирования (Java). Парадигмы и принципы в Java.
-Основные понятия Java. Введение в платформу Java. JVM, JRE, JDK. Компиляция и запуск из консоли. Classpath. Eclipse IDE. SVN/Subclilpse.
-Типы данных, литералы, преобразование между примитивными типами, оптимизация компилятора java.
-Операции и операторы, приоритет, типы операндов в Java. Тип арифметического выражения в java. Массивы в java.
-Классы в Java. Класс Object (основные методы). Уровни доступа в Java. Наследование, инкапсуляция, полиморфизм. Оператор instanceof. Преобразования между классами, массивами. Перегрузка, перекрытие и сокрытие методов в Java. Ключевые слова final, static. Класс Class (предназначение, способы получения). GC.
-Абстрактные классы, интерфейсы, их отличие в Java. Спецификаторы элементов интерфейсов по умолчанию в java. Javadoc. Generics.
-UML обзорно.
-Исключения в Java try/catch/finally, throw/throws, checked/unchecked exceptions, yourown.
-IO: cимвольные, байтовые потоки, Scanner, Formatter, IO: надстройки. Сериализация/десериализация в java.
-Threads в Java: базовые понятия, основные методы, синхронизация, взаимодействие.
-Коллекции в Java Иерархия java. Iterable/Iterator, Collection/List/Set/Queue.
-Сравнение объектов в Java. Интерфейсы Comparable, Comparator. Методы hashCode, equals, compare/compare To.
-Java and XML
-JDBC
-Java Web: HTTP, Tomcat, JSP, Servlets
-Building, testing and other tools: Maven, Ant, Junit, TestNG, cobertura.
-Методы get и post.
-Основы HTML, XHTML, CSS.
-Основы JavaScript, jQuery, AJAX.
-Особенности программирования под Web.' );
-INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'Тестирование QA', '3700', '40', '1', '5', '4', '2015-12-22 23:42:28', 'Что такое тестирование, как, когда и кому оно нужно.
-Основные модели и методологии разработки программ. Где и когда начинается(и заканчивается) тестирование.
-Современные методологии разработки программного обеспечения Agile(Scrum/XP/FDD/TDD/Kanban), RUP.
-Виды/типы тестирования.
-Что такое ошибки/баги. Типы багов.
-Проектная документация: плохая и хорошая. Что с ней делать.
-Тестовая документация и багтрекинг.
-Что такое багтрекинг и для чего он нужен. Основные багтрекинговые системы и обязательные поля.
-Тесты. Хорошие и плохие и почему так.
-Классы эквивалентности и граничные значения. Применение в реальной жизни.
-Разработка тестового покрытия. Разработаем собственный тест план.
-Тестирование требований. Работа с заказчиком.
-Автоматизация тестирования. Когда, зачем, почему и как.
-Нагрузочное тестирование, тестирование уязвимости и TBD.' );
-INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'Верстка WEB страниц', '4200', '35', '1', '6', '5', '2015-12-22 23:42:32', 'Основы Web-программирования. Установка и настройка ПО. Работа с Adobe Photoshop. Настройка рабочих инструментов.
-Что такое HTML. Базовые теги HTML и их свойства по умолчанию.
-Что такое CSS. Селекторы css.
-Правила оформления проекта. Как писать читабельный код, сode style.
-Принципы разметки страницы, понятие потока.
-Выравнивание элементов float, layout, overflow.
-Позиционирование элементов, position.
-Выравнивание, display.
-Базовые элементы страницы.
-Верстка блока navigation.
-Верстка блока drop-down menu.
-Верстка блока pagination.
-Верстка блока footer-at-bottom.
-HTML5/CSS3.
-Responsive markup (адаптивная верстка).
-Frameworks: twitter bootstrap и другие.
-Тестовый проект: responsive markup, pixel perfect.' );
-INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( '.NET', '5200', '60', '2', '7', '6', '2015-12-22 23:42:35', 'Знакомство с платформой .NET
-Начало работы с Visual Studio
-Сборки пространства имён и типы данных
-Основы CLR
-Первое приложение и Метод \'Main\'
-Примитивные целые типы данных
-Примитивные дробные типы данных
-Объявление и инициализация переменных
-Булевский тип
-Арифметические операции
-Конструкции принятия решений
-Логические операции
-Битовые операции
-Определение пользовательских методов класса
-Ссылочные и размерные типы
-Массивы
-Итерационные конструкции
-Строки
-Обработка исключений
-ООП в C#
-Жизненный цикл объектов
-Делегаты
-События
-Дополнительные возможности классов в C#
-Интерфейсы обощения и коллекции' );
-INSERT INTO `Course`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'С++', '6000', '65', '3', '8', '7', '2015-12-22 23:42:38', 'Установка ПО. Введение в С++
-Типы данных, операции и функции в С++. Характеристики языка C++. Введение в синтаксис. Структура кода. Компилятор
-Выполнение программы на C++. Стек вызовов. Указатели и массивы. Использование указателей. Ссылки. Динамическая память. Многомерные массивы. Строки и ввод-вывод.
-Структуры и классы. Методы. Конструкторы и деструкторы. Объекты и классы. Модификаторы доступа. Константность. Конструктор копирования, присваивания. Класс массива.
-Основы объектно-ориентированного программирования. Перегрузка. Виртуальные методы. Таблица виртуальных методов. Объектно-ориентированное программирование. Особенности наследования в C++.
-Дополнительные возможности C++. Правила переопределения операторов. Умные указатели. Ключевые слова static и inline. Ключевое слово friend. Шаблон проектирования Singleton
-Шаблоны функций. Специализация шаблонов.
-Выполнение курсовой работы
-' );
+-- CREATE TABLE "courses" ----------------------------------
+CREATE TABLE `courses` ( 
+	`course_name` VarChar( 255 ) NOT NULL,
+	`price` Int( 10 ) NOT NULL,
+	`duration` Int( 3 ) NOT NULL,
+	`level` Int( 10 ) NOT NULL,
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
+	`teacher_id` Int( 11 ) NOT NULL,
+	`created` Timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	`about` Text NOT NULL,
+	PRIMARY KEY ( `id` ) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 9;
 -- ---------------------------------------------------------
 
 
@@ -312,13 +220,100 @@ INSERT INTO `teachers`(`id`,`name`,`about`,`skills`,`phone`,`mail`,`skype`,`phot
 INSERT INTO `users`(`id`,`login`,`password`,`email`,`name`,`age`,`avatar`,`city`,`phone`,`date_register`,`level`,`surname`) VALUES ( '1', 'alenija', '12345', 'alenija23@gmail.com', 'Alona', '28', 'alenija.jpg', 'Kharkiv', '380967673', '2015-12-23 22:55:13', '3', 'Verzina' );
 INSERT INTO `users`(`id`,`login`,`password`,`email`,`name`,`age`,`avatar`,`city`,`phone`,`date_register`,`level`,`surname`) VALUES ( '2', 'Kirill', '54321', 'kostichev.kirill@gmail.com', 'Kirill', '29', 'kirill.jpg', 'Kharkiv', '380955790', '2015-12-23 22:54:53', '4', 'Kostichev' );
 INSERT INTO `users`(`id`,`login`,`password`,`email`,`name`,`age`,`avatar`,`city`,`phone`,`date_register`,`level`,`surname`) VALUES ( '3', 'Roma', '78785', 'Romz2000@gmail.com
-', 'Roma', '26', 'masha.jpg', 'Kharkiv', '380', '2015-12-23 03:17:03', '1', 'Dzyavgo' );
-INSERT INTO `users`(`id`,`login`,`password`,`email`,`name`,`age`,`avatar`,`city`,`phone`,`date_register`,`level`,`surname`) VALUES ( '4', 'alex', '14752', 'alex@gmail.com', 'Aleksandr', '20', 'alex.png', 'Lviv', '380', '2015-12-23 03:17:24', '2', 'Petrash' );
+', 'Roma', '26', 'Roma.jpg', 'Kharkiv', '380876675', '2015-12-24 23:33:14', '1', 'Dzyavgo' );
+INSERT INTO `users`(`id`,`login`,`password`,`email`,`name`,`age`,`avatar`,`city`,`phone`,`date_register`,`level`,`surname`) VALUES ( '4', 'alex', '14752', 'alex@gmail.com', 'Aleksandr', '20', 'alex.png', 'Lviv', '380654545', '2015-12-24 23:31:19', '2', 'Petrash' );
 -- ---------------------------------------------------------
 
 
--- CREATE INDEX "lnk_Course_teachers_2" --------------------
-CREATE INDEX `lnk_Course_teachers_2` USING BTREE ON `Course`( `teacher_id` );
+-- Dump data of "courses" ----------------------------------
+INSERT INTO `courses`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'PHP', '5500', '60', '2', '1', '1', '0000-00-00 00:00:00', '' );
+INSERT INTO `courses`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'Phiton', '2000', '20', '1', '2', '1', '0000-00-00 00:00:00', '' );
+INSERT INTO `courses`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'JavaScript', '3800', '60', '1', '3', '2', '0000-00-00 00:00:00', '' );
+INSERT INTO `courses`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'Java', '4500', '60', '2', '4', '3', '2015-12-23 02:37:41', 'Основы объектно-ориентированного программирования (Java). Парадигмы и принципы в Java.
+Основные понятия Java. Введение в платформу Java. JVM, JRE, JDK. Компиляция и запуск из консоли. Classpath. Eclipse IDE. SVN/Subclilpse.
+Типы данных, литералы, преобразование между примитивными типами, оптимизация компилятора java.
+Операции и операторы, приоритет, типы операндов в Java. Тип арифметического выражения в java. Массивы в java.
+Классы в Java. Класс Object (основные методы). Уровни доступа в Java. Наследование, инкапсуляция, полиморфизм. Оператор instanceof. Преобразования между классами, массивами. Перегрузка, перекрытие и сокрытие методов в Java. Ключевые слова final, static. Класс Class (предназначение, способы получения). GC.
+Абстрактные классы, интерфейсы, их отличие в Java. Спецификаторы элементов интерфейсов по умолчанию в java. Javadoc. Generics.
+UML обзорно.
+Исключения в Java try/catch/finally, throw/throws, checked/unchecked exceptions, yourown.
+IO: cимвольные, байтовые потоки, Scanner, Formatter, IO: надстройки. Сериализация/десериализация в java.
+Threads в Java: базовые понятия, основные методы, синхронизация, взаимодействие.
+Коллекции в Java Иерархия java. Iterable/Iterator, Collection/List/Set/Queue.
+Сравнение объектов в Java. Интерфейсы Comparable, Comparator. Методы hashCode, equals, compare/compare To.
+Java and XML
+JDBC
+Java Web: HTTP, Tomcat, JSP, Servlets
+Building, testing and other tools: Maven, Ant, Junit, TestNG, cobertura.
+Методы get и post.
+Основы HTML, XHTML, CSS.
+Основы JavaScript, jQuery, AJAX.
+Особенности программирования под Web.' );
+INSERT INTO `courses`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'Тестирование QA', '3700', '40', '1', '5', '4', '2015-12-22 23:42:28', 'Что такое тестирование, как, когда и кому оно нужно.
+Основные модели и методологии разработки программ. Где и когда начинается(и заканчивается) тестирование.
+Современные методологии разработки программного обеспечения Agile(Scrum/XP/FDD/TDD/Kanban), RUP.
+Виды/типы тестирования.
+Что такое ошибки/баги. Типы багов.
+Проектная документация: плохая и хорошая. Что с ней делать.
+Тестовая документация и багтрекинг.
+Что такое багтрекинг и для чего он нужен. Основные багтрекинговые системы и обязательные поля.
+Тесты. Хорошие и плохие и почему так.
+Классы эквивалентности и граничные значения. Применение в реальной жизни.
+Разработка тестового покрытия. Разработаем собственный тест план.
+Тестирование требований. Работа с заказчиком.
+Автоматизация тестирования. Когда, зачем, почему и как.
+Нагрузочное тестирование, тестирование уязвимости и TBD.' );
+INSERT INTO `courses`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'Верстка WEB страниц', '4200', '35', '1', '6', '5', '2015-12-22 23:42:32', 'Основы Web-программирования. Установка и настройка ПО. Работа с Adobe Photoshop. Настройка рабочих инструментов.
+Что такое HTML. Базовые теги HTML и их свойства по умолчанию.
+Что такое CSS. Селекторы css.
+Правила оформления проекта. Как писать читабельный код, сode style.
+Принципы разметки страницы, понятие потока.
+Выравнивание элементов float, layout, overflow.
+Позиционирование элементов, position.
+Выравнивание, display.
+Базовые элементы страницы.
+Верстка блока navigation.
+Верстка блока drop-down menu.
+Верстка блока pagination.
+Верстка блока footer-at-bottom.
+HTML5/CSS3.
+Responsive markup (адаптивная верстка).
+Frameworks: twitter bootstrap и другие.
+Тестовый проект: responsive markup, pixel perfect.' );
+INSERT INTO `courses`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( '.NET', '5200', '60', '2', '7', '6', '2015-12-22 23:42:35', 'Знакомство с платформой .NET
+Начало работы с Visual Studio
+Сборки пространства имён и типы данных
+Основы CLR
+Первое приложение и Метод \'Main\'
+Примитивные целые типы данных
+Примитивные дробные типы данных
+Объявление и инициализация переменных
+Булевский тип
+Арифметические операции
+Конструкции принятия решений
+Логические операции
+Битовые операции
+Определение пользовательских методов класса
+Ссылочные и размерные типы
+Массивы
+Итерационные конструкции
+Строки
+Обработка исключений
+ООП в C#
+Жизненный цикл объектов
+Делегаты
+События
+Дополнительные возможности классов в C#
+Интерфейсы обощения и коллекции' );
+INSERT INTO `courses`(`course_name`,`price`,`duration`,`level`,`id`,`teacher_id`,`created`,`about`) VALUES ( 'С++', '6000', '65', '3', '8', '7', '2015-12-22 23:42:38', 'Установка ПО. Введение в С++
+Типы данных, операции и функции в С++. Характеристики языка C++. Введение в синтаксис. Структура кода. Компилятор
+Выполнение программы на C++. Стек вызовов. Указатели и массивы. Использование указателей. Ссылки. Динамическая память. Многомерные массивы. Строки и ввод-вывод.
+Структуры и классы. Методы. Конструкторы и деструкторы. Объекты и классы. Модификаторы доступа. Константность. Конструктор копирования, присваивания. Класс массива.
+Основы объектно-ориентированного программирования. Перегрузка. Виртуальные методы. Таблица виртуальных методов. Объектно-ориентированное программирование. Особенности наследования в C++.
+Дополнительные возможности C++. Правила переопределения операторов. Умные указатели. Ключевые слова static и inline. Ключевое слово friend. Шаблон проектирования Singleton
+Шаблоны функций. Специализация шаблонов.
+Выполнение курсовой работы
+' );
 -- ---------------------------------------------------------
 
 
@@ -342,8 +337,13 @@ CREATE INDEX `lnk_lessons_Course` USING BTREE ON `lessons`( `course_id` );
 -- ---------------------------------------------------------
 
 
+-- CREATE INDEX "lnk_Course_teachers_2" --------------------
+CREATE INDEX `lnk_Course_teachers_2` USING BTREE ON `courses`( `teacher_id` );
+-- ---------------------------------------------------------
+
+
 -- CREATE LINK "lnk_Course_teachers" -----------------------
-ALTER TABLE `Course`
+ALTER TABLE `courses`
 	ADD CONSTRAINT `lnk_Course_teachers` FOREIGN KEY ( `teacher_id` )
 	REFERENCES `teachers`( `id` )
 	ON DELETE Cascade
@@ -363,7 +363,7 @@ ALTER TABLE `comments`
 -- CREATE LINK "lnk_comments_Course" -----------------------
 ALTER TABLE `comments`
 	ADD CONSTRAINT `lnk_comments_Course` FOREIGN KEY ( `course_id` )
-	REFERENCES `Course`( `id` )
+	REFERENCES `courses`( `id` )
 	ON DELETE Cascade
 	ON UPDATE Cascade;
 -- ---------------------------------------------------------
@@ -381,7 +381,7 @@ ALTER TABLE `comments`
 -- CREATE LINK "lnk_lessons_Course" ------------------------
 ALTER TABLE `lessons`
 	ADD CONSTRAINT `lnk_lessons_Course` FOREIGN KEY ( `course_id` )
-	REFERENCES `Course`( `id` )
+	REFERENCES `courses`( `id` )
 	ON DELETE Cascade
 	ON UPDATE Cascade;
 -- ---------------------------------------------------------
