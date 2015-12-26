@@ -1,6 +1,6 @@
 <?php
 
-class Teacher extends CI_Controller {
+class Teachers extends CI_Controller {
 
     public function index($n = 0)
     {
