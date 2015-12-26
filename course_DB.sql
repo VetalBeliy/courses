@@ -94,6 +94,8 @@ AUTO_INCREMENT = 9;
 
 -- Dump data of "comments" ---------------------------------
 INSERT INTO `comments`(`id`,`user_id`,`course_id`,`teacher_id`,`created`,`text_review`) VALUES ( '1', '1', '1', '1', '2015-12-17 14:02:00', 'Best of the best =)' );
+INSERT INTO `comments`(`id`,`user_id`,`course_id`,`teacher_id`,`created`,`text_review`) VALUES ( '2', '2', '1', '1', '2015-12-26 02:07:13', 'I am glad that I chose this course' );
+INSERT INTO `comments`(`id`,`user_id`,`course_id`,`teacher_id`,`created`,`text_review`) VALUES ( '3', '4', '4', '3', '2015-12-26 02:08:26', 'Good courses' );
 -- ---------------------------------------------------------
 
 

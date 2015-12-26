@@ -1,7 +1,7 @@
 <?php
 class Comments extends CI_Controller 
 {
-	public function comments_view($id = 0)
+	public function index($id = 0)
 	{
 		$this->load->model('comments_model');
 		$data['comments'] = $this->comments_model->get_comments($id);
