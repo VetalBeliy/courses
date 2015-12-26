@@ -5,7 +5,6 @@ class Courses_model extends CI_Model {
 
     function get_courses_all()
     {
-       // $this->db->order_by('id','desc');
         $this->db->select('*');
         $this->db->from('courses');
         $this->db->join('teachers', 'teachers.id = courses.teacher_id');

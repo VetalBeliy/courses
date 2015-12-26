@@ -7,6 +7,7 @@
 
 <body>
     <?php $this->load->helper('url'); ?>
+    <h3>Отзывы наших студентов</h3>
 	<table border="2">
 		<tr>
 			<th> Аватар </th>
@@ -19,8 +20,7 @@
 		<?php foreach ($comments as $comments_item): ?>
 		<tr>
 			<td align="left">
-                  <?php echo '<img src ='.base_url().'img/photos/users/'.$comments_item['user_avatar']; ?>
-                        width="189" height="255" alt="User_logo">       
+                <?php echo '<img src ='.base_url(). 'img/photos/users/' .$comments_item['user_avatar']; ?> width="70" height="100" alt="User_logo">       
             </td>
 
             <td align="left">
